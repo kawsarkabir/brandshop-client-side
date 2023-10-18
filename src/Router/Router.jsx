@@ -50,7 +50,9 @@ const Router =  createBrowserRouter([
             },
             {
                 path: '/dashboard/allproduct',
-                element: <AllProduct></AllProduct>
+                element: <AllProduct></AllProduct>, 
+                loader: ()=> fetch('http://localhost:5000/addproducts')
+            
             },
             {
                 path: '/dashboard/allbrand',

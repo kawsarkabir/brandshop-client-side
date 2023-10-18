@@ -1,9 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const {logIn} = useContext(AuthContext)
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,17 +18,13 @@ const Login = () => {
 
     // login  with  email and password
     logIn(email, password)
-    .then(result=> {
-      console.log(result.user);
-      Swal.fire({
-        title: 'success!',
-        text: 'Successfully create your account',
-        icon: 'success',
-        confirmButtonText: 'Cool'
-      })
+    .then(()=> {
+      toast.success("Login successfull");
+      navigate(location?.state ? location.state : "/");
     })
-    .then(error=>{
+    .catch(error=>{
       console.log(error);
+      toast.error("password and email doesnot match");
     })
     
   };

@@ -15,9 +15,9 @@ const Navbar = () => {
                 <li>Support</li>
               </ul>
               <ul>
-                <li>
-                  <img src="./images/country-logo-16x16.png" alt="" />
-                  United State
+                <li className="flex gap-x-2">
+                  <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="" className="w-6" />
+                  <span>United State</span>
                 </li>
                 <li>
                   USD <i className="fa-solid fa-angle-down"></i>

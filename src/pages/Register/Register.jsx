@@ -52,8 +52,9 @@ const Register = () => {
         });
       })
 
-      .then((error) => {
+      .catch((error) => {
         console.log(error);
+        toast.error("Invalid Your user Name and Password");
       });
   };
 
