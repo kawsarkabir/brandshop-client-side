@@ -5,7 +5,7 @@ import "./Responsive.css";
 const Navbar = () => {
   return (
     <>
-      <header>
+      <header className="max-w-screen-xl mx-auto">
         <div className="container">
           <nav>
             <div className="top-navbar">
@@ -29,8 +29,8 @@ const Navbar = () => {
             </div>
             <div className="middle-navbar">
               <div className="logo">
-                <Link to={'/'}>
-                <img src="https://i.ibb.co/mXKTYxf/logo.png" alt="" />
+                <Link to={"/"}>
+                  <img src="https://i.ibb.co/mXKTYxf/logo.png" alt="" />
                 </Link>
               </div>
               <div className="search-bar">
@@ -64,7 +64,11 @@ const Navbar = () => {
                 <NavLink
                   to="/"
                   className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "active bg-black text-white py-3 px-8" : ""
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "active bg-black text-white py-3 px-8"
+                      : ""
                   }
                 >
                   Home
@@ -72,19 +76,27 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  to="/addproduct"
+                  to="/products"
                   className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "active  bg-black text-white py-3 px-8" : ""
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "active  bg-black text-white py-3 px-8"
+                      : ""
                   }
                 >
-                  Add Product
+                  Products
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   to="/mycart"
                   className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "active  bg-black text-white py-3 px-8" : ""
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "active  bg-black text-white py-3 px-8"
+                      : ""
                   }
                 >
                   My Cart
@@ -94,7 +106,11 @@ const Navbar = () => {
                 <NavLink
                   to="/login"
                   className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "active  bg-black text-white py-3 px-8" : ""
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "active  bg-black text-white py-3 px-8"
+                      : ""
                   }
                 >
                   Login
@@ -104,7 +120,11 @@ const Navbar = () => {
                 <NavLink
                   to="/register"
                   className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "active  bg-black text-white py-3 px-8" : ""
+                    isPending
+                      ? "pending"
+                      : isActive
+                      ? "active  bg-black text-white py-3 px-8"
+                      : ""
                   }
                 >
                   Register

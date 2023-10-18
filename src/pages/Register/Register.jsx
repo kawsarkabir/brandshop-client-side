@@ -1,22 +1,69 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const registerUser = { name, email, password };
+    const photo = form.photo.value;
+    const registerUser = { name, email, password, photo };
     console.log(registerUser);
+
+    let passwordRegex = /^(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).+$/;
+    if (password.length < 6) {
+      toast.error("Passwords must be at least 6 characters long");
+      return false;
+    } else if (!/[A-Z]/.test(password)) {
+      toast.error("Password must contain at least one uppercase letter");
+      return false;
+    } else if (!passwordRegex.test(password)) {
+      toast.error("Password must contain at least one Spicial charactor");
+      return false;
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        navigate("/");
+        console.log(result);
+
+        fetch("http://localhost:5000/user", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(registerUser),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
+
+        Swal.fire({
+          title: "success!",
+          text: "Successfully create your account",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
+      })
+
+      .then((error) => {
+        console.log(error);
+      });
   };
+
   return (
-    <div className="hero min-h-screen">
-      <div className="hero-content flex-col">
+    <div className="hero h-[70vh] mt-10">
+      <div className=" w-2/4 mx-auto flex-col">
         <div className="text-center">
           <h1 className="text-5xl font-bold">Register now!</h1>
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className=" card shadow-xl mt-6 bg-base-100">
           <form onSubmit={handleRegister} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -53,8 +100,20 @@ const Register = () => {
                 required
               />
             </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">PhotoURL</span>
+              </label>
+              <input
+                name="photo"
+                type="text"
+                placeholder="photoURL"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Register</button>
+              <button className="btn bg-[#FFBB38] border-none">Register</button>
             </div>
             <h1>
               Already Have a Account ?

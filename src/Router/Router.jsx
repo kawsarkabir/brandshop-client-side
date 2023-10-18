@@ -5,6 +5,12 @@ import AddProduct from "../pages/AddProduct/AddProduct";
 import MyCart from "../pages/MyCart/MyCart";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import AllProduct from "../components/AllProduct/AllProduct";
+import AllBrand from "../components/Brand/AllBrand/AllBrand";
+import AddBrand from "../components/Brand/AddBrand/AddBrand";
+import AllProducts from "../components/Products/AllProducts";
+ 
 
 const Router =  createBrowserRouter([
     {
@@ -16,8 +22,8 @@ const Router =  createBrowserRouter([
                 element: <Home></Home>
             }, 
             {
-                path: '/addproduct', 
-                element: <AddProduct></AddProduct>
+                path: '/products', 
+                element: <AllProducts></AllProducts>
             }, 
             {
                 path: '/mycart', 
@@ -30,7 +36,31 @@ const Router =  createBrowserRouter([
             {
                 path: '/register', 
                 element: <Register></Register>
+            },
+           
+        ]
+    },
+    {
+        path: '/dashboard', 
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: '/dashboard/addproduct',
+                element:<AddProduct></AddProduct>
+            },
+            {
+                path: '/dashboard/allproduct',
+                element: <AllProduct></AllProduct>
+            },
+            {
+                path: '/dashboard/allbrand',
+                element: <AllBrand></AllBrand>
+            },
+            {
+                path: '/dashboard/addbrand', 
+                element: <AddBrand></AddBrand>
             }
+
         ]
     }
 ])

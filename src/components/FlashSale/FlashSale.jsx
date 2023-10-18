@@ -8,34 +8,34 @@ const FlashSale = () => {
         <div className="ml-8">
           <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
             <div className="flex flex-col">
-              <span className="countdown font-mono text-5xl">
+              <span className="countdown font-mono text-2xl font-bold  bg-white rounded-full w-20 h-20 flex justify-center items-center text-red-500">
                 <span style={{ "--value": 15 }}></span>
               </span>
               days
             </div>
             <div className="flex flex-col">
-              <span className="countdown font-mono text-5xl">
+              <span className="countdown font-mono text-2xl font-bold bg-white rounded-full w-20 h-20 flex justify-center items-center text-blue-500">
                 <span style={{ "--value": 10 }}></span>
               </span>
               hours
             </div>
             <div className="flex flex-col">
-              <span className="countdown font-mono text-5xl">
+              <span className="countdown font-mono text-2xl font-bold bg-white rounded-full w-20 h-20 flex justify-center items-center text-green-500">
                 <span style={{ "--value": 24 }}></span>
               </span>
               min
             </div>
-            <div className="flex flex-col">
-              <span className="countdown font-mono text-5xl">
+            <div className="flex flex-col justify-center items-center">
+              <span className="countdown font-mono text-2xl font-bold bg-white rounded-full w-20 h-20 flex justify-center items-center text-pink-500">
                 <span style={{ "--value": 51 }}></span>
               </span>
               sec
             </div>
           </div>
-          <h1 className="font-semibold lg:text-4xl text-2xl my-5">
+          <h1 className="font-semibold lg:text-5xl text-2xl my-8">
             WOO! Flash Sale
           </h1>
-          <Link className="underline mt-10">Shop Now</Link>
+          <Link className=" text-[#FFBB38] btn btn-outline btn-warning">Shop Now</Link>
         </div>
       </div>
       <div className="campaing-right flex items-center">

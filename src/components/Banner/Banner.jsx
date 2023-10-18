@@ -26,7 +26,7 @@ const Banner = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <div className=" flex items-center  banner-section">
+          <div className=" flex items-center  slider-1">
             <div className=" flex justify-evenly  max-w-screen-xl">
               <div className="lg:ml-44 ml-10">
                 <span className="text-[#FFBB38] font-medium text-3xl mb-6">
