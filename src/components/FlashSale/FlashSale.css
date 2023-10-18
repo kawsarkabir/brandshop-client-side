@@ -1,0 +1,16 @@
+.campaing-left{
+    background: url('https://i.ibb.co/fnnVVC7/campaign-cover-countdown.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    width: 600px;
+    background-position: bottom right;
+}
+.campaing-right{
+    background: url('https://i.ibb.co/18RTKhC/download-app-cover.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    width: 600px;
+    background-position: bottom right; 
+}
