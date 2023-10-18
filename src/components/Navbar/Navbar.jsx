@@ -29,7 +29,9 @@ const Navbar = () => {
             </div>
             <div className="middle-navbar">
               <div className="logo">
+                <Link to={'/'}>
                 <img src="https://i.ibb.co/mXKTYxf/logo.png" alt="" />
+                </Link>
               </div>
               <div className="search-bar">
                 <div className="input-field">
