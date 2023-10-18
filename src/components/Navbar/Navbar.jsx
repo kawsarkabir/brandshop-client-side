@@ -1,93 +1,121 @@
 import { Link, NavLink } from "react-router-dom";
+import "./Navbar.css";
+import "./Responsive.css";
 
 const Navbar = () => {
-  const navLinks = (
-    <>
-      <li>
-        <NavLink
-          to="/"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-red-600" : ""
-          }
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/addproduct"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-red-600" : ""
-          }
-        >
-          Add Product
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/mycart"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-red-600" : ""
-          }
-        >
-          My Cart
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/login"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-red-600" : ""
-          }
-        >
-          Login
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/register"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-red-600" : ""
-          }
-        >
-          Register
-        </NavLink>
-      </li>
-    </>
-  );
   return (
-    <div className="navbar max-w-screen-xl mx-auto">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            {navLinks}
-          </ul>
+    <>
+      <header>
+        <div className="container">
+          <nav>
+            <div className="top-navbar">
+              <ul>
+                <li>Account</li>
+                <li>Tract Order</li>
+                <li>Support</li>
+              </ul>
+              <ul>
+                <li>
+                  <img src="./images/country-logo-16x16.png" alt="" />
+                  United State
+                </li>
+                <li>
+                  USD <i className="fa-solid fa-angle-down"></i>
+                </li>
+                <li>
+                  Bangla <i className="fa-solid fa-angle-down"></i>
+                </li>
+              </ul>
+            </div>
+            <div className="middle-navbar">
+              <div className="logo">
+                <img src="https://i.ibb.co/mXKTYxf/logo.png" alt="" />
+              </div>
+              <div className="search-bar">
+                <div className="input-field">
+                  <input type="text" placeholder="Search" />
+                  <input type="text" placeholder="All Categories" />
+                  <i className="fa-solid fa-angle-down"></i>
+                </div>
+                <button className="btn-orange">Search</button>
+              </div>
+              <div className="navbar-icon-menu">
+                <i className="fa-regular fa-heart"></i>
+                <i className="fa-brands fa-shopify"></i>
+                <i className="fa-regular fa-user"></i>
+              </div>
+            </div>
+          </nav>
         </div>
-        <Link to={'/'} className="btn btn-ghost normal-case text-xl">brand shop</Link>
-      </div>
-      <div className="navbar-center hidden lg:flex navbar-end">
-        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
-      </div>
-    </div>
+      </header>
+      <section className="main-navbar">
+        <div className="container">
+          <div className="main-navbar-wrapper">
+            <div className="categories">
+              <h4>
+                <i className="fa-solid fa-bars"></i> All Categories
+                <i className="fa-solid fa-angle-down"></i>
+              </h4>
+            </div>
+            <ul>
+              <li>
+                <NavLink
+                  to="/"
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active bg-black text-white py-3 px-8" : ""
+                  }
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/addproduct"
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active  bg-black text-white py-3 px-8" : ""
+                  }
+                >
+                  Add Product
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/mycart"
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active  bg-black text-white py-3 px-8" : ""
+                  }
+                >
+                  My Cart
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/login"
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active  bg-black text-white py-3 px-8" : ""
+                  }
+                >
+                  Login
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/register"
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active  bg-black text-white py-3 px-8" : ""
+                  }
+                >
+                  Register
+                </NavLink>
+              </li>
+            </ul>
+            <button className="seller-btn">
+              Become a Seller <i className="fa-solid fa-angle-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
