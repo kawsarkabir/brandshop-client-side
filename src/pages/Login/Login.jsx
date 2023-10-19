@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const {logIn} = useContext(AuthContext)
+  const { logIn, logInWithGoogle } = useContext(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -18,15 +17,24 @@ const Login = () => {
 
     // login  with  email and password
     logIn(email, password)
-    .then(()=> {
-      toast.success("Login successfull");
-      navigate(location?.state ? location.state : "/");
-    })
-    .catch(error=>{
-      console.log(error);
-      toast.error("password and email doesnot match");
+      .then(() => {
+        toast.success("Login successfull");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("password and email doesnot match");
+      });
+
+  };
+  const handleGoogleLogin = () => {
+    // login with google
+    logInWithGoogle()
+    .then(()=>{
+      navigate('/')
     })
     
+    .catch();
   };
   return (
     <div className="hero h-[70vh]">
@@ -62,6 +70,9 @@ const Login = () => {
             </div>
             <div className="form-control mt-6">
               <button className="btn border-none bg-[#FFBB38]">Login</button>
+            </div>
+            <div className="flex justify-center mt-2">
+              <i onClick={handleGoogleLogin} className="fa-brands fa-google text-3xl"></i>
             </div>
             <h1>
               New to Here ?

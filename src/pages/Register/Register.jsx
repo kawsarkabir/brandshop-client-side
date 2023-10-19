@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, profileUpdate } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
@@ -50,6 +50,7 @@ const Register = () => {
           icon: "success",
           confirmButtonText: "Cool",
         });
+        profileUpdate(name, photo)
       })
 
       .catch((error) => {

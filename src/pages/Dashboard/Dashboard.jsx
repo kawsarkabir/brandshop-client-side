@@ -7,7 +7,6 @@ const Dashboard = () => {
       <Navbar></Navbar>
       <div className="my-20 max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-5">
         <div className="userInfo border-2 border-[#FFBB38]">
-          <h3 className="font-bold my-5 text-center">kawsar kabir</h3>
           <div className="flex flex-col gap-6">
             <ul className="menu menu-vertical">
               <li>

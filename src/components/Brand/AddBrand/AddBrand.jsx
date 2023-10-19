@@ -45,7 +45,7 @@ const AddBrand = () => {
                 <option>Samsung</option>
                 <option>Sony</option>
                 <option>Google</option>
-                <option>Inter</option>
+                <option>Intel</option>
                 <option>Nokia</option>
               </select>
             </div>

@@ -1,8 +1,18 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import "./Responsive.css";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleSignOut = () => {
+    logOut()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <header className="max-w-screen-xl mx-auto">
@@ -16,7 +26,11 @@ const Navbar = () => {
               </ul>
               <ul>
                 <li className="flex gap-x-2">
-                  <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="" className="w-6" />
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
+                    alt=""
+                    className="w-6"
+                  />
                   <span>United State</span>
                 </li>
                 <li>
@@ -42,9 +56,41 @@ const Navbar = () => {
                 <button className="btn-orange">Search</button>
               </div>
               <div className="navbar-icon-menu">
-                <i className="fa-regular fa-heart"></i>
-                <i className="fa-brands fa-shopify"></i>
-                <i className="fa-regular fa-user"></i>
+                <div>
+                  {user ? (
+                    <div className="dropdown dropdown-end">
+                      <label
+                        tabIndex={0}
+                        className="btn btn-ghost btn-circle avatar"
+                      >
+                        <div className="w-10 rounded-full">
+                          <img src={user?.photoURL} />
+                        </div>
+                      </label>
+                      <ul
+                        tabIndex={0}
+                        className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                      >
+                        <li>
+                          <a className="justify-between">{user.displayName}</a>
+                        </li>
+
+                        <li>
+                          <Link to={"/dashboard"}>Dashboard</Link>
+                        </li>
+                        <li onClick={handleSignOut}>
+                          <Link>Logout</Link>
+                        </li>
+                      </ul>
+                    </div>
+                  ) : (
+                    <Link to={"/login"}>
+                      <button className="w-[150px] bg-[#FFBB18] h-[50px] my-3 flex items-center justify-center rounded font-bold  text-[#000] hidden lg:block">
+                        Login
+                      </button>
+                    </Link>
+                  )}
+                </div>
               </div>
             </div>
           </nav>
@@ -116,24 +162,12 @@ const Navbar = () => {
                   Login
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/register"
-                  className={({ isActive, isPending }) =>
-                    isPending
-                      ? "pending"
-                      : isActive
-                      ? "active  bg-black text-white py-3 px-8"
-                      : ""
-                  }
-                >
-                  Register
-                </NavLink>
-              </li>
             </ul>
-            <button className="seller-btn">
+            <Link to={'/register'}>
+            <button  className="seller-btn">
               Become a Seller <i className="fa-solid fa-angle-right"></i>
             </button>
+            </Link>
           </div>
         </div>
       </section>
