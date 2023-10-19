@@ -56,9 +56,9 @@ const AddProduct = () => {
                 <option>Apple</option>
                 <option>Samsung</option>
                 <option>Sony</option>
-                <option value="">Google</option>
-                <option value="">Inter</option>
-                <option value="">Nokia</option>
+                <option>Google</option>
+                <option>Inter</option>
+                <option>Nokia</option>
               </select>
             </div>
             <div className="form-control">

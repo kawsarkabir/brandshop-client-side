@@ -10,6 +10,7 @@ import AllProduct from "../components/AllProduct/AllProduct";
 import AllBrand from "../components/Brand/AllBrand/AllBrand";
 import AddBrand from "../components/Brand/AddBrand/AddBrand";
 import AllProducts from "../components/Products/AllProducts";
+import BrandProductPage from "../components/BrandProductPage/BrandProductPage";
  
 
 const Router =  createBrowserRouter([
@@ -19,11 +20,14 @@ const Router =  createBrowserRouter([
         children: [
             {
                 path: '/', 
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: ()=> fetch('http://localhost:5000/addbrand'),
+                
             }, 
             {
                 path: '/products', 
-                element: <AllProducts></AllProducts>
+                element: <AllProducts></AllProducts>,
+                loader: ()=> fetch('http://localhost:5000/addproducts')
             }, 
             {
                 path: '/mycart', 
@@ -36,6 +40,11 @@ const Router =  createBrowserRouter([
             {
                 path: '/register', 
                 element: <Register></Register>
+            },
+            {
+                path: '/products/:id', 
+                element:  <BrandProductPage></BrandProductPage>,
+                // loader: ()=> fetch('http://localhost:5000/addproducts')
             },
            
         ]
@@ -56,7 +65,8 @@ const Router =  createBrowserRouter([
             },
             {
                 path: '/dashboard/allbrand',
-                element: <AllBrand></AllBrand>
+                element: <AllBrand></AllBrand>,
+                loader: ()=> fetch('http://localhost:5000/addbrand')
             },
             {
                 path: '/dashboard/addbrand', 

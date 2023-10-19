@@ -1,25 +1,25 @@
-const AllProductCard = ({ product }) => {
-  console.log(product);
-  const { productName, price, category, photoURL } = product || {};
+const AllBrandCard = ({brand}) => {
+    console.log(brand);
+    const {brandURL, brandName} = brand || {}
+
   return (
     <div>
       <div className="overflow-x-auto">
         <table className="table">
           <tbody>
             {/* row 1 */}
-            <tr className="flex justify-around items-center">
+            <tr className="flex justify-around">
               <td>
                 <div>
                   <div>
                     <div className="w-40 h-40">
-                      <img src={photoURL} alt=" product-img" />
+                      <img src={brandURL} alt=" product-img" />
                     </div>
                   </div>
                 </div>
               </td>
-              <td>{productName}</td>
-              <td>${price}</td>
-              <td>{category}</td>
+              <td>{brandName}</td>
+             
               <th>
                 <button className="btn btn-ghost btn-xs">Delete</button>
                 <button className="btn btn-ghost btn-xs">Update</button>
@@ -32,4 +32,4 @@ const AllProductCard = ({ product }) => {
   );
 };
 
-export default AllProductCard;
+export default AllBrandCard;
