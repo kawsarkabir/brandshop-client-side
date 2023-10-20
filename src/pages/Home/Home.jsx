@@ -1,4 +1,3 @@
- 
 import { useLoaderData } from "react-router-dom";
 import Banner from "../../components/Banner/Banner";
 import DisplayBrandHome from "../../components/Brand/DisplayBrandHome";
@@ -7,10 +6,8 @@ import FlashSale from "../../components/FlashSale/FlashSale";
 import Services from "../../components/Services/Services";
 
 const Home = () => {
-  const brands = useLoaderData()
-   
-     
-  
+  const brands = useLoaderData();
+
   return (
     <div>
       <Banner></Banner>

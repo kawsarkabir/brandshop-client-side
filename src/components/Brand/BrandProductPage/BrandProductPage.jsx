@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import SingleCetagoryProductCard from "../../Products/SingleCetagoryProductCard/SingleCetagoryProductCard";
 import Banner from "../../Banner/Banner";
+import SingleCetagoryProductCard from "../../Products/SingleCetagoryProductCard/SingleCetagoryProductCard";
 
 const BrandProductPage = () => {
   const [categoryProduct, setCetagoryProduct] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://brand-shop-server-one-bice.vercel.app/products")
       .then((res) => res.json())
       .then((data) => {
         const brandProduct = data.filter(

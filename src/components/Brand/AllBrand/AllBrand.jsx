@@ -1,8 +1,23 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import AllBrandCard from "../AllBrandCard/AllBrandCard";
 
 const AllBrand = () => {
   const allbrand = useLoaderData();
+  const [brands, setBrand] = useState(allbrand)
+
+    const handleDeleteBrand=(_id)=>{
+      console.log('delete btn click', _id);
+      fetch(`https://brand-shop-server-one-bice.vercel.app/${_id}`, {
+        method: 'DELETE', 
+      })
+      .then(res=>res.json())
+      .then(()=>{
+    
+        const remainingBrand = brands.filter(brand=>brand._id !== _id)
+        setBrand(remainingBrand)
+      })
+    }
   return (
     <div>
       <div className="overflow-x-auto">
@@ -17,8 +32,8 @@ const AllBrand = () => {
           </thead>
         </table>
       </div>
-      {allbrand.map((brand) => (
-        <AllBrandCard key={brand._id} brand={brand}></AllBrandCard>
+      {brands.map((brand) => (
+        <AllBrandCard  handleDeleteBrand={handleDeleteBrand} key={brand._id} brand={brand}></AllBrandCard>
       ))}
     </div>
   );

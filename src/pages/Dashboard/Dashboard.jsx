@@ -19,6 +19,9 @@ const Dashboard = () => {
                     <li>
                       <Link to={"/dashboard/addproduct"}>Add Product</Link>
                     </li>
+                    <li>
+                      <Link to={"/dashboard/updateproduct"}>Update Product</Link>
+                    </li>
                   </ul>
                 </details>
               </li>
@@ -32,12 +35,18 @@ const Dashboard = () => {
                     <li>
                       <Link to={"/dashboard/addbrand"}>Add New Brand</Link>
                     </li>
+                    <li>
+                      <Link to={"/dashboard/updatebrand"}>Update Brand</Link>
+                    </li>
                   </ul>
                 </details>
               </li>
               <li>
-                <a>Item 3</a>
+                <Link to={'/dashboard/mycart'}>
+                 My Cart
+                </Link>
               </li>
+              
             </ul>
           </div>
         </div>

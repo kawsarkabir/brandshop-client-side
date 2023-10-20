@@ -1,11 +1,44 @@
+import { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const ProductDetails = () => {
   const productDetails = useLoaderData();
-  const { category, details, photoURL, price, productName, rating, _id } =
+const { category, details, photoURL, price, productName, rating, _id } =
     productDetails || {};
-  const handleAddToCart = () => {
-     
+
+  const { user } = useContext(AuthContext);
+
+  const handleAddToCart = (productDetails) => {
+    const { category, details, photoURL, price, productName } = productDetails;
+
+    const userId = user.uid;
+    console.log(userId);
+
+    const newProduct = {
+      category,
+      details,
+      photoURL,
+      price,
+      productName, 
+      userId
+    };
+    fetch("https://brand-shop-server-one-bice.vercel.app/mycart", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        Swal.fire(
+          'Good job!',
+          'Add to Cart Product Successfully!',
+          'success'
+        )
+      });
   };
   return (
     <div className="max-w-screen-xl mx-auto my-20">
@@ -74,7 +107,7 @@ const ProductDetails = () => {
           </div>
           <div>
             <Link
-              onClick={() => handleAddToCart()}
+              onClick={() => handleAddToCart(productDetails)}
               to={`/productdetails/${_id}`}
               className="btn btn-warning px-12"
             >

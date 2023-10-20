@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
-import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
   const { createUser, profileUpdate } = useContext(AuthContext);
@@ -34,7 +34,7 @@ const Register = () => {
         navigate("/");
         console.log(result);
 
-        fetch("http://localhost:5000/user", {
+        fetch("https://brand-shop-server-one-bice.vercel.app/user", {
           method: "POST",
           headers: {
             "content-type": "application/json",

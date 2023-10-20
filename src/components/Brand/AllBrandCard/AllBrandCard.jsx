@@ -1,7 +1,7 @@
-const AllBrandCard = ({brand}) => {
-    console.log(brand);
-    const {brandURL, brandName} = brand || {}
+import { Link } from "react-router-dom";
 
+const AllBrandCard = ({ brand, handleDeleteBrand }) => {
+  const { brandURL, brandName, _id } = brand || {};
   return (
     <div>
       <div className="overflow-x-auto">
@@ -19,10 +19,16 @@ const AllBrandCard = ({brand}) => {
                 </div>
               </td>
               <td>{brandName}</td>
-             
               <th>
-                <button className="btn btn-ghost btn-xs">Delete</button>
+                <button
+                  onClick={() => handleDeleteBrand(_id)}
+                  className="btn btn-ghost btn-xs"
+                >
+                  Delete
+                </button>
+                <Link to={`/dashboard/updatebrand/${_id}`}>
                 <button className="btn btn-ghost btn-xs">Update</button>
+                </Link>
               </th>
             </tr>
           </tbody>

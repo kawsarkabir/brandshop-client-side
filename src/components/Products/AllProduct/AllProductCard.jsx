@@ -1,6 +1,7 @@
-const AllProductCard = ({ product }) => {
-  console.log(product);
-  const { productName, price, category, photoURL } = product || {};
+import { Link } from "react-router-dom";
+
+const AllProductCard = ({ product, handleDeleteProduct }) => {
+  const { productName, price, category, photoURL, _id } = product || {};
   return (
     <div>
       <div className="overflow-x-auto">
@@ -21,8 +22,15 @@ const AllProductCard = ({ product }) => {
               <td>${price}</td>
               <td>{category}</td>
               <th>
-                <button className="btn btn-ghost btn-xs">Delete</button>
-                <button className="btn btn-ghost btn-xs">Update</button>
+                <button
+                  onClick={() => handleDeleteProduct(_id)}
+                  className="btn btn-ghost btn-xs"
+                >
+                  Delete
+                </button>
+                <Link to={`/dashboard/updateproduct/${_id}`}>
+                  <button className="btn btn-ghost btn-xs">Update</button>
+                </Link>
               </th>
             </tr>
           </tbody>

@@ -1,9 +1,24 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import AllProductCard from "./AllProductCard";
 
 const AllProduct = () => {
   const allProducts = useLoaderData();
-  const products = allProducts;
+  const [products, setProducts] = useState(allProducts);
+
+  const handleDeleteProduct = (_id) => {
+    fetch(`https://brand-shop-server-one-bice.vercel.app/products/${_id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(() => {
+        const remainingBrand = products.filter(
+          (product) => product._id !== _id
+        );
+        setProducts(remainingBrand);
+      });
+  };
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -21,7 +36,11 @@ const AllProduct = () => {
         </table>
       </div>
       {products?.map((product) => (
-        <AllProductCard key={product._id} product={product}></AllProductCard>
+        <AllProductCard
+          handleDeleteProduct={handleDeleteProduct}
+          key={product._id}
+          product={product}
+        ></AllProductCard>
       ))}
     </div>
   );

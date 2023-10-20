@@ -1,49 +1,27 @@
-import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
 
-const AddProduct = () => {
-  const handleAddProduct = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const productName = form.productName.value;
-    const category = form.category.value;
-    const price = form.price.value;
-    const rating = form.rating.value;
-    const details = form.details.value;
-    const photoURL = form.photoURL.value;
-    const addProducts = {
-      productName,
-      category,
-      price,
-      rating,
-      details,
-      photoURL,
-    };
-
-    fetch("https://brand-shop-server-one-bice.vercel.app/products", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(addProducts),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        Swal.fire({
-          title: "success!",
-          text: "Successfully add your product",
-          icon: "success",
-          confirmButtonText: "Cool",
-        });
-      });
-  };
+const UpdateProduct = () => {
+  const loadedProducts = useLoaderData()
+    const handleUpdateProduct = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const productName = form.productName.value;
+        const category = form.category.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const details = form.details.value;
+        const photoURL = form.photoURL.value;
+        const updateProducts = { productName, category, price, rating, details, photoURL };
+        console.log(updateProducts);
+    }
+          
   return (
     <div className=" bg-[#F4F3F0] p-20">
       <h1 className=" mb-8 lg:text-4xl shadow-sky-950 text-center font-bold">
-        Add New Product
+        Update Your Product: {loadedProducts.length}
       </h1>
       <div className="justify-center flex">
-        <form onSubmit={handleAddProduct}>
+        <form onSubmit={handleUpdateProduct}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10  ">
             <div className="form-control">
               <label className="label">
@@ -132,11 +110,11 @@ const AddProduct = () => {
             </div>
           </div>
 
-          <button className="btn bg-[#FFBB38] w-full mt-10">Add Product</button>
+          <button className="btn bg-[#FFBB38] w-full mt-10">Update Product</button>
         </form>
       </div>
     </div>
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;

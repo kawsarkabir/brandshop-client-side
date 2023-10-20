@@ -1,37 +1,38 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../Layout/Layout";
-import Home from "../pages/Home/Home";
-import AddProduct from "../pages/AddProduct/AddProduct";
-import MyCart from "../pages/MyCart/MyCart";
-import Login from "../pages/Login/Login";
-import Register from "../pages/Register/Register";
-import Dashboard from "../pages/Dashboard/Dashboard";
-import AllProduct from "../components/Products/AllProduct/AllProduct";
-import AllBrand from "../components/Brand/AllBrand/AllBrand";
 import AddBrand from "../components/Brand/AddBrand/AddBrand";
-import AllProducts from "../components/Products/AllProducts/AllProducts";
+import AllBrand from "../components/Brand/AllBrand/AllBrand";
 import BrandProductPage from "../components/Brand/BrandProductPage/BrandProductPage";
+import UpdateBrand from "../components/Brand/UpdateBrand/UpdateBrand";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
+import AllProduct from "../components/Products/AllProduct/AllProduct";
+import AllProducts from "../components/Products/AllProducts/AllProducts";
 import ProductDetails from "../components/Products/ProductDetails./ProductDetails";
+import AddProduct from "../pages/AddProduct/AddProduct";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import Home from "../pages/Home/Home";
+import Login from "../pages/Login/Login";
+import MyCart from "../pages/MyCart/MyCart";
+import Register from "../pages/Register/Register";
+import UpdateProduct from "../pages/UpdateProduct/UpdateProduct";
 import PrivateRouter from "./PrivateRouter";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/addbrand"),
+        loader: () => fetch("https://brand-shop-server-one-bice.vercel.app/brand"),
+        
       },
       {
         path: "/products",
         element: <AllProducts></AllProducts>,
-        loader: () => fetch("http://localhost:5000/products"),
-      },
-      {
-        path: "/mycart",
-        element: <PrivateRouter><MyCart></MyCart></PrivateRouter>,
+        loader: () => fetch("https://brand-shop-server-one-bice.vercel.app/products"),
       },
       {
         path: "/login",
@@ -47,9 +48,13 @@ const Router = createBrowserRouter([
       },
       {
         path: "/productdetails/:id",
-        element: <PrivateRouter><ProductDetails></ProductDetails></PrivateRouter> ,
+        element: (
+          <PrivateRouter>
+            <ProductDetails></ProductDetails>
+          </PrivateRouter>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(`https://brand-shop-server-one-bice.vercel.app/products/${params.id}`),
       },
     ],
   },
@@ -68,16 +73,37 @@ const Router = createBrowserRouter([
       {
         path: "/dashboard/allproduct",
         element: <AllProduct></AllProduct>,
-        loader: () => fetch("http://localhost:5000/products"),
+        loader: () => fetch("https://brand-shop-server-one-bice.vercel.app/products"),
+      },
+      {
+        path: "/dashboard/updateproduct/:id",
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({ params }) =>
+          fetch(`https://brand-shop-server-one-bice.vercel.app/products/${params.id}`),
       },
       {
         path: "/dashboard/allbrand",
         element: <AllBrand></AllBrand>,
-        loader: () => fetch("http://localhost:5000/addbrand"),
+        loader: () => fetch("https://brand-shop-server-one-bice.vercel.app/brand"),
+      },
+      {
+        path: "/dashboard/updatebrand",
+        element: <UpdateBrand></UpdateBrand>,
+        loader: ({ params }) =>
+          fetch(`https://brand-shop-server-one-bice.vercel.app/${params.id}`),
       },
       {
         path: "/dashboard/addbrand",
         element: <AddBrand></AddBrand>,
+      },
+      {
+        path: "/dashboard/mycart",
+        element: (
+          <PrivateRouter>
+            <MyCart></MyCart>
+          </PrivateRouter>
+        ),
+        loader: ()=> fetch(`https://brand-shop-server-one-bice.vercel.app/mycart`)
       },
     ],
   },
