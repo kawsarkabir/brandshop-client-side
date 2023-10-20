@@ -1,24 +1,48 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateProduct = () => {
-  const loadedProducts = useLoaderData()
-    const handleUpdateProduct = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const productName = form.productName.value;
-        const category = form.category.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const details = form.details.value;
-        const photoURL = form.photoURL.value;
-        const updateProducts = { productName, category, price, rating, details, photoURL };
-        console.log(updateProducts);
-    }
-          
+  const loadedProducts = useLoaderData();
+
+  const handleUpdateProduct = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const productName = form.productName.value;
+    const category = form.category.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const details = form.details.value;
+    const photoURL = form.photoURL.value;
+
+    const updateProducts = {
+      productName,
+      category,
+      price,
+      rating,
+      details,
+      photoURL,
+    };
+    fetch(
+      `https://brand-shop-server-one-bice.vercel.app/products/${loadedProducts._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateProducts),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        Swal.fire("Good job!", "Your Product SuccessFully Updated!", "success");
+      });
+  };
+
   return (
     <div className=" bg-[#F4F3F0] p-20">
       <h1 className=" mb-8 lg:text-4xl shadow-sky-950 text-center font-bold">
-        Update Your Product: {loadedProducts.length}
+        Update Your Product
       </h1>
       <div className="justify-center flex">
         <form onSubmit={handleUpdateProduct}>
@@ -31,7 +55,7 @@ const UpdateProduct = () => {
                 <input
                   name="productName"
                   type="text"
-                  placeholder="Enter product name"
+                  defaultValue={loadedProducts.productName}
                   className="input input-bordered"
                 />
               </label>
@@ -41,6 +65,7 @@ const UpdateProduct = () => {
                 <span className="label-text">Category</span>
               </label>
               <select
+                defaultValue={loadedProducts.category}
                 name="category"
                 className="select select-bordered join-item"
               >
@@ -63,7 +88,7 @@ const UpdateProduct = () => {
                 <input
                   name="price"
                   type="text"
-                  placeholder="Enter product price"
+                  defaultValue={loadedProducts.price}
                   className="input input-bordered"
                 />
               </label>
@@ -76,7 +101,7 @@ const UpdateProduct = () => {
                 <input
                   name="rating"
                   type="text"
-                  placeholder="Enter  your rating"
+                  defaultValue={loadedProducts.rating}
                   className="input input-bordered"
                 />
               </label>
@@ -90,7 +115,7 @@ const UpdateProduct = () => {
                 <input
                   name="details"
                   type="text"
-                  placeholder="Enter  short description"
+                  defaultValue={loadedProducts.details}
                   className="input input-bordered"
                 />
               </label>
@@ -103,14 +128,16 @@ const UpdateProduct = () => {
                 <input
                   name="photoURL"
                   type="text"
-                  placeholder="Enter photo URL"
+                  defaultValue={loadedProducts.photoURL}
                   className="input input-bordered  "
                 />
               </label>
             </div>
           </div>
 
-          <button className="btn bg-[#FFBB38] w-full mt-10">Update Product</button>
+          <button className="btn bg-[#FFBB38] w-full mt-10">
+            Update Product
+          </button>
         </form>
       </div>
     </div>

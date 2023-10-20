@@ -87,10 +87,10 @@ const Router = createBrowserRouter([
         loader: () => fetch("https://brand-shop-server-one-bice.vercel.app/brand"),
       },
       {
-        path: "/dashboard/updatebrand",
+        path: "/dashboard/updatebrand/:id",
         element: <UpdateBrand></UpdateBrand>,
         loader: ({ params }) =>
-          fetch(`https://brand-shop-server-one-bice.vercel.app/${params.id}`),
+          fetch(`https://brand-shop-server-one-bice.vercel.app/brand/${params.id}`),
       },
       {
         path: "/dashboard/addbrand",

@@ -1,22 +1,37 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import AllProductCard from "./AllProductCard";
+import Swal from "sweetalert2";
 
 const AllProduct = () => {
   const allProducts = useLoaderData();
   const [products, setProducts] = useState(allProducts);
 
   const handleDeleteProduct = (_id) => {
-    fetch(`https://brand-shop-server-one-bice.vercel.app/products/${_id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then(() => {
-        const remainingBrand = products.filter(
-          (product) => product._id !== _id
-        );
-        setProducts(remainingBrand);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://brand-shop-server-one-bice.vercel.app/products/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then(() => {
+            Swal.fire("Deleted!", "Your product has been deleted.", "success");
+
+            const remainingBrand = products.filter(
+              (product) => product._id !== _id
+            );
+            setProducts(remainingBrand);
+          });
+      }
+    });
   };
 
   return (

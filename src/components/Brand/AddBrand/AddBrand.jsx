@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const AddBrand = () => {
   const handleAddBrand = (e) => {
     e.preventDefault();
@@ -9,7 +11,7 @@ const AddBrand = () => {
       brandURL,
     };
     console.log(brand);
-    fetch("https://brand-shop-server-one-bice.vercel.app", {
+    fetch("https://brand-shop-server-one-bice.vercel.app/brand", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,9 +19,12 @@ const AddBrand = () => {
       body: JSON.stringify(brand),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-       alert('brand added')
+      .then(() => {
+        Swal.fire(
+          'Good job!',
+          'Your Brand Added Successfully!',
+          'success'
+        )
     });
   };
   return (

@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 const MyCart = () => {
   const loadedProduct = useLoaderData();
 
@@ -10,16 +11,29 @@ const MyCart = () => {
     (product) => product.userId === user.uid
   );
   const handleMyCartDelete = (_id) => {
-    fetch(`https://brand-shop-server-one-bice.vercel.app/mycart/${_id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then(() => {
-        const remainingBrand = myCartProducts.filter(
-          (product) => product._id !== _id
-        );
-        setMyCartProducts(remainingBrand);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://brand-shop-server-one-bice.vercel.app/mycart/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then(() => {
+            Swal.fire("Deleted!", "Your Product has been deleted.", "success");
+            const remainingBrand = myCartProducts.filter(
+              (product) => product._id !== _id
+            );
+            setMyCartProducts(remainingBrand);
+          });
+      }
+    });
   };
 
   return (
@@ -37,11 +51,10 @@ const MyCart = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {myCartProduct.map((product, idx) => (
+            {myCartProducts.map((product, idx) => (
               <tr key={product._id}>
                 <td>{idx + 1}</td>
                 <td>
-                  {" "}
                   <img className="w-16" src={product.photoURL} alt="" />
                 </td>
                 <td>{product.productName}</td>
