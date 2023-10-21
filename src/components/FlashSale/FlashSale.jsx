@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
 import "./FlashSale.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const FlashSale = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+  }, [])
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2  max-w-screen-xl mx-auto gap-6 my-20">
+    <div data-aos="fade-up" className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2  max-w-screen-xl mx-auto gap-6 my-20">
       <div className="campaing-left flex items-center">
         <div className="ml-8">
           <div className="grid grid-flow-col gap-5 text-center auto-cols-max">

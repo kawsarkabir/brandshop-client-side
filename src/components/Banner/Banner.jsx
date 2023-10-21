@@ -5,10 +5,18 @@ import "./Banner.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { useEffect } from "react";
 const Banner = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+  }, []);
   return (
     <div>
       <Swiper
@@ -26,9 +34,9 @@ const Banner = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <div className=" flex items-center  slider-1">
+          <div  className=" flex items-center  slider-1">
             <div className=" flex justify-evenly  max-w-screen-xl">
-              <div className="lg:ml-44 ml-10">
+              <div data-aos="fade-right" className="lg:ml-44 ml-10">
                 <span className="text-[#FFBB38] font-medium text-3xl mb-6">
                   VR BOX 3D Glass
                 </span>
@@ -36,7 +44,9 @@ const Banner = () => {
                   Explore Our Tech <br />
                   Collection Perfect <br /> Gadget
                 </h1>
-                <button className="btn bg-[#FFBB38] border-none mt-5 px-12">Shop Now</button>
+                <button className="btn bg-[#FFBB38] border-none mt-5 px-12">
+                  Shop Now
+                </button>
               </div>
             </div>
           </div>
@@ -44,7 +54,7 @@ const Banner = () => {
         <SwiperSlide>
           <div className=" flex items-center  slider-2">
             <div className=" flex justify-evenly  max-w-screen-xl">
-              <div className="lg:ml-44 ml-10">
+              <div data-aos="fade-right" className="lg:ml-44 ml-10">
                 <span className="text-[#FFBB38] font-medium text-3xl mb-6">
                   VR BOX 3D Glass
                 </span>
@@ -52,7 +62,9 @@ const Banner = () => {
                   Explore Our Tech <br />
                   Collection Perfect <br /> Gadget
                 </h1>
-                <button className="btn bg-[#FFBB38] border-none mt-5 px-12">Shop Now</button>
+                <button className="btn bg-[#FFBB38] border-none mt-5 px-12">
+                  Shop Now
+                </button>
               </div>
             </div>
           </div>
@@ -60,7 +72,7 @@ const Banner = () => {
         <SwiperSlide>
           <div className=" flex items-center  slider-3">
             <div className=" flex justify-evenly  max-w-screen-xl">
-              <div className="lg:ml-44 ml-10">
+              <div data-aos="fade-right" className="lg:ml-44 ml-10">
                 <span className="text-[#FFBB38] font-medium text-3xl mb-6">
                   VR BOX 3D Glass
                 </span>
@@ -68,7 +80,9 @@ const Banner = () => {
                   Explore Our Tech <br />
                   Collection Perfect <br /> Gadget
                 </h1>
-                <button className="btn bg-[#FFBB38] border-none mt-5 px-12">Shop Now</button>
+                <button className="btn bg-[#FFBB38] border-none mt-5 px-12">
+                  Shop Now
+                </button>
               </div>
             </div>
           </div>

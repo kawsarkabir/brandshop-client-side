@@ -1,7 +1,15 @@
 import "./Discount.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 const Discount = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+  }, [])
   return (
-    <div className="discount-banner my-20">
+    <div data-aos="fade-right" className="discount-banner my-20">
       <div className="flex gap-5 max-w-screen-xl mx-auto justify-center text-center">
         <div>
           <h1 className="lg:text-4xl text-2xl font-semibold">

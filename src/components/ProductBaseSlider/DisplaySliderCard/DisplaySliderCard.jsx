@@ -40,7 +40,7 @@ const DisplaySliderCard = ({ singleSlider }) => {
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
+          <SwiperSlide>
           <div className=" flex items-center">
             <div className=" flex justify-evenly  max-w-screen-xl">
               <div className="lg:ml-44 ml-10">
@@ -55,23 +55,22 @@ const DisplaySliderCard = ({ singleSlider }) => {
             </div>
           </div>
         </SwiperSlide>
-        {
-          <SwiperSlide>
-            <div className=" flex items-center">
-              <div className=" flex justify-evenly  max-w-screen-xl">
-                <div className="lg:ml-44 ml-10">
-                  <span className="text-[#FFBB38] font-medium text-3xl mb-6">
-                    {sliderTitle}
-                  </span>
-                  <p className="my-3 w-3/4">{sliderDecs}</p>
-                  <button className="btn bg-[#FFBB38] border-none mt-5 px-12">
-                    Shop Now
-                  </button>
-                </div>
+
+        {/* <SwiperSlide>
+          <div className=" flex items-center">
+            <div className=" flex justify-evenly  max-w-screen-xl">
+              <div className="lg:ml-44 ml-10">
+                <span className="text-[#FFBB38] font-medium text-3xl mb-6">
+                  {sliderTitle}
+                </span>
+                <p className="my-3 w-3/4">{sliderDecs}</p>
+                <button className="btn bg-[#FFBB38] border-none mt-5 px-12">
+                  Shop Now
+                </button>
               </div>
             </div>
-          </SwiperSlide>
-        }
+          </div>
+        </SwiperSlide> */}
       </Swiper>
     </div>
   );
