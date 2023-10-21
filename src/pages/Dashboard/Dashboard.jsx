@@ -36,6 +36,19 @@ const Dashboard = () => {
                 </details>
               </li>
               <li>
+                <details>
+                  <summary>Product Base Slider</summary>
+                  <ul className="p-2">
+                    <li>
+                      <Link to={"/dashboard/allproductbaseslider"}>All Slider</Link>
+                    </li>
+                    <li>
+                      <Link to={"/dashboard/addproductbaseslider"}>Add New Slider</Link>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+              <li>
                 <Link to={"/dashboard/mycart"}>My Cart</Link>
               </li>
             </ul>

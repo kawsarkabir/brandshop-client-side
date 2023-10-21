@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import PropTypes from "prop-types";
 const AllBrandCard = ({ brand, handleDeleteBrand }) => {
   const { brandURL, brandName, _id } = brand || {};
   return (
@@ -27,7 +27,7 @@ const AllBrandCard = ({ brand, handleDeleteBrand }) => {
                   Delete
                 </button>
                 <Link to={`/dashboard/updatebrand/${_id}`}>
-                <button className="btn btn-ghost btn-xs">Update</button>
+                  <button className="btn btn-ghost btn-xs">Update</button>
                 </Link>
               </th>
             </tr>
@@ -37,5 +37,8 @@ const AllBrandCard = ({ brand, handleDeleteBrand }) => {
     </div>
   );
 };
-
+AllBrandCard.propTypes = {
+  brand: PropTypes.object,
+  handleDeleteBrand: PropTypes.func,
+};
 export default AllBrandCard;

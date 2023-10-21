@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import PropTypes from "prop-types";
 const AllProductCard = ({ product, handleDeleteProduct }) => {
   const { productName, price, category, photoURL, _id } = product || {};
   return (
@@ -39,5 +39,8 @@ const AllProductCard = ({ product, handleDeleteProduct }) => {
     </div>
   );
 };
-
+AllProductCard.propTypes = {
+  product: PropTypes.object,
+  handleDeleteProduct: PropTypes.func,
+};
 export default AllProductCard;

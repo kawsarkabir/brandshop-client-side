@@ -1,9 +1,8 @@
 import Rating from "react-rating";
 import { Link } from "react-router-dom";
-
+import PropTypes from "prop-types";
 const SingleCetagoryProductCard = ({ singleCetagoryProduct }) => {
-  const { productName, price, rating, photoURL, _id } =
-    singleCetagoryProduct || {};
+  const { price, rating, photoURL, _id } = singleCetagoryProduct || {};
   return (
     <>
       <div className="max-w-screen-xl mx-auto">
@@ -70,5 +69,7 @@ const SingleCetagoryProductCard = ({ singleCetagoryProduct }) => {
     </>
   );
 };
-
+SingleCetagoryProductCard.propTypes = {
+  singleCetagoryProduct: PropTypes.object,
+};
 export default SingleCetagoryProductCard;

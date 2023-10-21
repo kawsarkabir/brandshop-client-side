@@ -16,6 +16,8 @@ import MyCart from "../pages/MyCart/MyCart";
 import Register from "../pages/Register/Register";
 import UpdateProduct from "../pages/UpdateProduct/UpdateProduct";
 import PrivateRouter from "./PrivateRouter";
+import AllProductBaseSlider from "../components/ProductBaseSlider/AllProductBaseSlider/AllProductBaseSlider";
+import AddProductBaseSlider from "../components/ProductBaseSlider/AddProductBaseSlider/AddProductBaseSlider";
 
 const Router = createBrowserRouter([
   {
@@ -26,13 +28,14 @@ const Router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://brand-shop-server-one-bice.vercel.app/brand"),
-        
+        loader: () =>
+          fetch("https://brand-shop-server-one-bice.vercel.app/brand"),
       },
       {
         path: "/products",
         element: <AllProducts></AllProducts>,
-        loader: () => fetch("https://brand-shop-server-one-bice.vercel.app/products"),
+        loader: () =>
+          fetch("https://brand-shop-server-one-bice.vercel.app/products"),
       },
       {
         path: "/login",
@@ -45,6 +48,8 @@ const Router = createBrowserRouter([
       {
         path: "/products/:id",
         element: <BrandProductPage></BrandProductPage>,
+        loader: () =>
+          fetch("https://brand-shop-server-one-bice.vercel.app/productbaseslider"),
       },
       {
         path: "/productdetails/:id",
@@ -54,7 +59,9 @@ const Router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`https://brand-shop-server-one-bice.vercel.app/products/${params.id}`),
+          fetch(
+            `https://brand-shop-server-one-bice.vercel.app/products/${params.id}`
+          ),
       },
     ],
   },
@@ -73,28 +80,43 @@ const Router = createBrowserRouter([
       {
         path: "/dashboard/allproduct",
         element: <AllProduct></AllProduct>,
-        loader: () => fetch("https://brand-shop-server-one-bice.vercel.app/products"),
+        loader: () =>
+          fetch("https://brand-shop-server-one-bice.vercel.app/products"),
       },
       {
         path: "/dashboard/updateproduct/:id",
         element: <UpdateProduct></UpdateProduct>,
         loader: ({ params }) =>
-          fetch(`https://brand-shop-server-one-bice.vercel.app/products/${params.id}`),
+          fetch(
+            `https://brand-shop-server-one-bice.vercel.app/products/${params.id}`
+          ),
       },
       {
         path: "/dashboard/allbrand",
         element: <AllBrand></AllBrand>,
-        loader: () => fetch("https://brand-shop-server-one-bice.vercel.app/brand"),
+        loader: () =>
+          fetch("https://brand-shop-server-one-bice.vercel.app/brand"),
       },
       {
         path: "/dashboard/updatebrand/:id",
         element: <UpdateBrand></UpdateBrand>,
         loader: ({ params }) =>
-          fetch(`https://brand-shop-server-one-bice.vercel.app/brand/${params.id}`),
+          fetch(
+            `https://brand-shop-server-one-bice.vercel.app/brand/${params.id}`
+          ),
       },
       {
         path: "/dashboard/addbrand",
         element: <AddBrand></AddBrand>,
+      },
+      {
+        path: '/dashboard/allproductbaseslider', 
+        element: <AllProductBaseSlider></AllProductBaseSlider>, 
+        loader: ()=> fetch('https://brand-shop-server-one-bice.vercel.app/productbaseslider')
+      },
+      {
+        path: "/dashboard/addproductbaseslider",
+        element: <AddProductBaseSlider></AddProductBaseSlider>,
       },
       {
         path: "/dashboard/mycart",
@@ -103,7 +125,8 @@ const Router = createBrowserRouter([
             <MyCart></MyCart>
           </PrivateRouter>
         ),
-        loader: ()=> fetch(`https://brand-shop-server-one-bice.vercel.app/mycart`)
+        loader: () =>
+          fetch(`https://brand-shop-server-one-bice.vercel.app/mycart`),
       },
     ],
   },
