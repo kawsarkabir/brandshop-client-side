@@ -7,12 +7,12 @@ const BrandProductPage = () => {
   const [categoryProduct, setCetagoryProduct] = useState([]);
   const { id } = useParams();
   const loadedSlider = useLoaderData();
-  console.log(loadedSlider);
+   
 
   const productBaseSlider = loadedSlider.filter(
     (slider) => slider.brandName === id
   );
-  console.log(productBaseSlider);
+   
 
   useEffect(() => {
     fetch("https://brand-shop-server-one-bice.vercel.app/products")
@@ -27,12 +27,7 @@ const BrandProductPage = () => {
   return (
     <>
       <div>
-        {productBaseSlider.map((singleSlider) => (
-          <DisplaySliderCard
-            key={singleSlider._id}
-            singleSlider={singleSlider}
-          ></DisplaySliderCard>
-        ))}
+         <DisplaySliderCard productBaseSlider={productBaseSlider}></DisplaySliderCard>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-5 mt-20">
         {categoryProduct.map((singleCetagoryProduct) => (
