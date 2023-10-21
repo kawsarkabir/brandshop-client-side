@@ -20,12 +20,8 @@ const AddBrand = () => {
     })
       .then((res) => res.json())
       .then(() => {
-        Swal.fire(
-          'Good job!',
-          'Your Brand Added Successfully!',
-          'success'
-        )
-    });
+        Swal.fire("Good job!", "Your Brand Added Successfully!", "success");
+      });
   };
   return (
     <div className=" bg-[#F4F3F0] p-20">
