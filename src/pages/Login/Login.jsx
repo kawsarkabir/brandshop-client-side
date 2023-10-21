@@ -25,16 +25,15 @@ const Login = () => {
         console.log(error);
         toast.error("password and email doesnot match");
       });
-
   };
   const handleGoogleLogin = () => {
     // login with google
     logInWithGoogle()
-    .then(()=>{
-      navigate('/')
-    })
-    
-    .catch();
+      .then(() => {
+        navigate("/");
+      })
+
+      .catch();
   };
   return (
     <div className="hero h-[70vh]">
@@ -71,9 +70,13 @@ const Login = () => {
             <div className="form-control mt-6">
               <button className="btn border-none bg-[#FFBB38]">Login</button>
             </div>
-            <div className="flex justify-center mt-2">
-              <i onClick={handleGoogleLogin} className="fa-brands fa-google text-3xl"></i>
+            <div className="  text-center mt-2">
+              <button onClick={handleGoogleLogin} className="btn">
+                Sign in with Google
+                <i className="fa-brands fa-google text-3xl"></i>
+              </button>
             </div>
+
             <h1>
               New to Here ?
               <Link to={"/register"} className="text-blue-800">
