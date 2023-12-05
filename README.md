@@ -1,15 +1,15 @@
-Here is 5 key feature's in this website...
+## Here is 5 key feature's in this website...
 
 1. This site implement Email and password based Authentication. This means, i have to implement the Registration and the login page. Users should be able to toggle between Login and Registration view
    On the Registration page, display errors when:
 
-The password authentications ::
+## The password authentications ::
 
 - is less than 6 characters
 - don't have a capital letter
 - don't have a special character
 
-On the Login page, display errors when:
+## On the Login page, display errors when:
 
 - password doesn't match
 - email doesn't match
